@@ -1,0 +1,50 @@
+<div id="container">
+	<div class="header invert">
+		<div class="name-header">
+			<span>Name</span>
+		</div>
+		<div class="created">
+			<span>Created</span>
+		</div>
+		<div class="category">
+			<span>Category</span>
+		</div>
+		<div class="content">
+			<span>Content</span>
+		</div>
+		<div class="dates">
+			<span>Dates</span>
+		</div>
+		<div class="icon-header-blok">
+			<a href="/">
+				<img id="cancel" src="./icon/cancel.png" alt="X" />
+			</a>
+		</div>
+	</div>
+	<div id="tasks">
+	{{#each tasks}}
+		<div class="item">
+			<input type="hidden" value={{_id}} name="id" />
+			<div class="name">
+				<div class="icon-task-name-blok">
+					<img class="icon-task invert" src="./icon/{{iconTask}}" alt="X" />
+				</div>
+				<div><span>{{name}}</span></div>
+			</div>
+			<div class="created"><span>{{created}}</span></div>
+			<div class="category"><span>{{category}}</span></div>
+			<div class="content"><span>{{content}}</span></div>
+			<div class="dates"><span>{{dates}}</span></div>
+			<div class="icon-task-blok">
+				<form	action="unarchiveItem" method="post">
+					<input type="hidden" value="{{_id}}" name="id">
+					<button type="submit" class="button-unarchive" action="/unarchiveItem">
+						<img class="icon-unarchive" src="./icon/unarchive.png" alt="error">
+					</button>
+				</form>
+			</div>
+		</div>
+	{{/each}}
+	<div>
+</div>
+</div>

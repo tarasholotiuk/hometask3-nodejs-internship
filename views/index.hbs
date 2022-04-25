@@ -1,0 +1,112 @@
+<div class="header invert">
+	<div class="name-header">
+		<span>Name</span>
+	</div>
+	<div class="created">
+		<span>Created</span>
+	</div>
+	<div class="category">
+		<span>Category</span>
+	</div>
+	<div class="content">
+		<span>Content</span>
+	</div>
+	<div class="dates">
+		<span>Dates</span>
+	</div>
+	<div class="icon-header-blok">
+		<a href="/archive">
+			<img id="icon-archive-header" src="./icon/archive.png" alt="error" />
+		</a>
+		<form method="POST" action="deleteAll">
+			<button type="submit" id="button-delete-all"><img
+					id="icon-delete-header"
+					class="icon-delete-all"
+					src="./icon/delete.png"
+					alt="error"
+				/></button>
+		</form>
+	</div>
+</div>
+
+<div id="tasks">
+	{{#each tasks}}
+		<div class="item">
+			<input type="hidden" value={{_id}} name="id" />
+			<div class="name">
+				<div class="icon-task-name-blok">
+					<img class="icon-task invert" src="./icon/{{iconTask}}" alt="X" />
+				</div>
+				<div><span>{{name}}</span></div>
+			</div>
+			<div class="created"><span>{{created}}</span></div>
+			<div class="category"><span>{{category}}</span></div>
+			<div class="content"><span>{{content}}</span></div>
+			<div class="dates"><span>{{dates}}</span></div>
+			<div class="icon-task-blok">
+				<form action="editItem" method="post">
+					<input type="hidden" value="{{_id}}" name="id" />
+					<button type="submit" class="button-edit" action="/editItem">
+						<img class="icon-edit" src="./icon/edit2.png" alt="error" />
+					</button>
+				</form>
+				<form action="archiveItem" method="post">
+					<input type="hidden" value="{{_id}}" name="id" />
+					<button type="submit" class="button-archive" action="/archiveItem">
+						<img class="icon-archive" src="./icon/archive2.png" alt="error" />
+					</button>
+				</form>
+				<form action="deleteItem" method="post">
+					<input type="hidden" value="{{_id}}" name="id" />
+					<button type="submit" class="button-delete" action="/deleteItem">
+						<img class="icon-delete" src="./icon/delete2.png" alt="error" />
+					</button>
+				</form>
+			</div>
+		</div>
+	{{/each}}
+	<div>
+		<form method="POST" action="/fillBase">
+			<button
+				type="submit"
+				class="button-create-task"
+				id="button-fill-base"
+				value="Create Task"
+				href="/inputForm"
+			>
+				Fill Base
+			</button>
+
+		</form>
+	</div>
+	<div>
+		<a
+			class="button-create-task"
+			id="button-create-task"
+			value="Create Task"
+			href="/inputForm"
+		>Create Task</a>
+	</div>
+</div>
+
+<div id="info-header" class="info-header invert">
+	<div class="note-category">
+		<span>Note Category</span>
+	</div>
+	<div class="active">
+		<span>Active</span>
+	</div>
+	<div class="archived">
+		<span>Archived</span>
+	</div>
+</div>
+
+<div id="info-container">
+	{{#each categories}}
+		<div class="item">
+			<div class="note-category">{{this}}</div>
+			<div class="active">{{countActive this}}</div>
+			<div class="archived">{{countArchived this}}</div>
+		</div>
+	{{/each}}
+</div>

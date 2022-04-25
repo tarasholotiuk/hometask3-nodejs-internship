@@ -1,0 +1,23 @@
+<h2>Edit mode</h2>
+<form action="/saveChanges" method="POST">
+<input type="hidden" value={{id}} name="id"/>
+	<div id='input-form'>
+		<input id="name-input" placeholder="Name" name="name" value={{name}}></input>
+		<div class="created"></div>
+		<select id="category-list" name="category">
+			<option disabled>Choose category</option>
+			{{#each categories}}
+					<option name={{this}} {{setSelected this}}>{{this}}</option>
+			{{/each}}
+		</select>
+		<input id="content-input" placeholder="Content" name="content" value="{{content}}"></input>
+		<button type="submit"
+			class="button-create-task"
+			style="top: 50px; right: -70px;"
+			id="button-create-task"
+			value="Edit"
+      action="/saveChanges"
+		>Save</button>
+	</div>
+	<div style="margin-top: 100px;">{{error}}</div>
+</form>
